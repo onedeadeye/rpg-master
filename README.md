@@ -5,4 +5,6 @@ Featuers
  - (ha none yet)
  
 Version History
- - (no versions yet)
+ - 11/30/18
+     * lots of skeleton code
+     * running main does 3 lines of text
