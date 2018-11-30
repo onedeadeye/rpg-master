@@ -49,7 +49,7 @@ public class StatSheet {
     public void SetModifiers(float physicalAtt, float rangedAtt, float magicalAtt, float physicalDef, float rangedDef, float magicalDef, float spellCost) {
         modifierPhysicalAttack = physicalAtt;
         modifierRangedAttack = rangedAtt;
-        modifierMagicalAttac = magicalAtt;
+        modifierMagicalAttack = magicalAtt;
         modifierPhysicalDefense = physicalDef;
         modifierRangedDefense = rangedDef;
         modifierMagicalDefense = magicalDef;

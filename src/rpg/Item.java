@@ -15,9 +15,7 @@ public class Item {
         super();
     }
 
-    public void Use() {
-
-    }
+    public void Use(){};
 
     public String GetName() {
         return iName;

@@ -6,8 +6,8 @@ public class Character extends Actor {
 
     private int cExperience;
 
-    public Character(String name, int level, CompactStats stats, CompactModifiers mods, Class newClass) {
-        super(name, level, stats, mods);
+    public Character(String name, int level, CharacterClass newClass) {
+        super(name, level, newClass.getStartingStats(), newClass.getStartingMods());
         cClass = newClass;
     }
 
@@ -21,7 +21,7 @@ public class Character extends Actor {
 
     public void CheckStatus() {
         CheckExperience();
-        CalculateStatistics();
+        CalculateStatics();
         CheckHealth();
     }
 }
