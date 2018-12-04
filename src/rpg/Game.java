@@ -1,4 +1,6 @@
 package rpg;
+import rpg.classes.*;
+import rpg.renderengine.*;
 
 public class Game {
     public static void main(String[] args) {
@@ -9,6 +11,11 @@ public class Game {
         
         CompactStats stats = new CompactStats(10, 10, 10, 10, 10, 10);
         CompactModifiers mods = new CompactModifiers(0, 0, 0, 0, 0, 0, 0);
-        Character newCharacter = new Character("joe shmoe", 1, new KnightClass());
+        PlayerCharacter newCharacter = new PlayerCharacter("joe shmoe", 1, KnightClass.MakeClass());
+
+        Engine engine = new Engine();
+
+        engine.SetWindow(12, 12);
+        engine.RenderWithWindow();
     }
 }

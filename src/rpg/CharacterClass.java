@@ -5,8 +5,8 @@ public class CharacterClass {
     private String cName;
     private float cLevelSpeed;
     
-    private CompactStats cStartingStats;
-    private CompactModifiers cStartingMods;
+    protected CompactStats cStartingStats;
+    protected CompactModifiers cStartingMods;
 
     public CharacterClass(String name, float levelSpeed) {
         cName = name;
@@ -22,10 +22,18 @@ public class CharacterClass {
     }
     
     public CompactStats getStartingStats() {
-      return cStartingStats();
+      return cStartingStats;
+    }
+
+    public void setStartingStats(CompactStats stats) {
+        cStartingStats = stats;
     }
   
     public CompactModifiers getStartingMods() {
-      return cStartingMods();
+      return cStartingMods;
+    }
+
+    public void setStartingMods(CompactModifiers mods) {
+        cStartingMods = mods;
     }
 }

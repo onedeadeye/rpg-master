@@ -1,18 +1,22 @@
 package rpg;
 
-public class Character extends Actor {
+public class PlayerCharacter extends Actor {
 
-    private Class cClass;
+    private CharacterClass cClass;
 
     private int cExperience;
 
-    public Character(String name, int level, CharacterClass newClass) {
+    public PlayerCharacter(String name, int level, CharacterClass newClass) {
         super(name, level, newClass.getStartingStats(), newClass.getStartingMods());
         cClass = newClass;
     }
 
+    private float EXPAtLevel(int level) {
+        return((0.5f*level) + 10);
+    }
+
     private void CheckExperience() {
-        if (cExperience > (aLevel * aLevel) * (cClass.GetLevelSpeed() + 1) + 100 * aLevel) {
+        if (cExperience > EXPAtLevel(aLevel) + EXPAtLevel(aLevel + 1)) {
             aLevel += 1;
             //TODO make this for real
         }
