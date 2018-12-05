@@ -21,6 +21,7 @@ public class Game {
         game.Say("What is your first adventurer's name?");
         input = scan.nextLine();
         PlayerCharacter newCharacter = new PlayerCharacter(input, 1, KnightClass.MakeClass());
+        player.AddCharacter(newCharacter);
         player.ListPartyStatus();
         player.AddCharacter(newCharacter);
 

@@ -25,20 +25,21 @@ public final class CLHandler {
 
         String[] splitArgs = args.split("\\s+");
 
-        System.out.println("Calling " + splitCommand + " with args " + args);
+        //System.out.println("Calling " + splitCommand + " with args " + args);
 
-        if (splitCommand == "move") {
-            System.out.println("moving");
+        if (splitCommand.equals("move")) {
             new move(splitArgs, player, world);
         }
 
-        if (splitCommand == "say") {
-            System.out.println("saying");
+        if (splitCommand.equals("moveWorldSpace")) {
+            new moveWorldSpace(splitArgs, player, world);
+        }
+
+        if (splitCommand.equals("say")) {
             new say(args, player, world);
         }
 
-        if (splitCommand == "listParty") {
-            System.out.println("listing");
+        if (splitCommand.equals("listParty")) {
             new listParty(args, player, world);
         }
     }

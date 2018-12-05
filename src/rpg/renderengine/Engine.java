@@ -60,8 +60,10 @@ public class Engine {
         for (int x = 0; x < eWorld.GetWidth(); x++) {
             bar += "--";
         }
-        System.out.println(bar);
-        System.out.println("you are in " + eWorld.GetName());
-        System.out.println(bar);
+
+        bar = bar.substring(0, bar.length() - 1);
+        GameSingleton.Say(bar);
+        GameSingleton.Say("you are in " + eWorld.GetName());
+        GameSingleton.Say(bar);
     }
 }

@@ -24,6 +24,16 @@ public class Player {
 
     public boolean Move(int x, int y, World world) {
         if (world.QueryInBound(x, y)) {
+            pXPos += x;
+            pYPos += y;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean MoveWorldSpace(int x, int y, World world) {
+        if (world.QueryInBound(x, y)) {
             pXPos = x;
             pYPos = y;
             return true;
@@ -42,7 +52,6 @@ public class Player {
 
     public void ListPartyStatus() {
         GameSingleton.Say("Status of " + pName + "'s party:");
-        System.out.println(pMembers.size());
         for (int i = 0; i < pMembers.size(); i++) {
             GameSingleton.Say(pMembers.get(i).aName + " - Level " + pMembers.get(i).aLevel + " " + pMembers.get(i).getClass().getName());
         }

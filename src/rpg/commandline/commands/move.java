@@ -13,6 +13,6 @@ public class move extends Command {
         // }
         player.Move(Integer.parseInt(args[0]), Integer.parseInt(args[1]), world);
         
-        GameSingleton.Say("Moved " + player.GetName() + " to " + Integer.parseInt(args[0]) + ", " + Integer.parseInt(args[1]));
+        GameSingleton.Say("Moved " + player.GetName() + " by " + Integer.parseInt(args[0]) + ", " + Integer.parseInt(args[1]));
     }
 }

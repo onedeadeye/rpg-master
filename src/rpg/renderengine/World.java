@@ -33,10 +33,10 @@ public class World {
     }
 
     public boolean QueryInBound(int x, int y) {
-        if (x - 1 > wXWidth) {
+        if (x > wXWidth || x < wXWidth) {
             return false;
         } else {
-            if (y - 1 > wYHeight) {
+            if (y > wYHeight || y < wYHeight) {
                 return false;
             } else {
                 return true;
