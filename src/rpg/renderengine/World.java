@@ -3,11 +3,13 @@ import java.util.*;
 
 public class World {
 
-    private int wXWidth = 256;
-    private int wYHeight = 256;
+    private int wXWidth = 16;
+    private int wYHeight = 16;
+    private String wName = "";
     public Character[][] wGeometry = new Character[wXWidth][wYHeight];
 
-    public World() {
+    public World(String name) {
+        wName = name;
         GenerateWorld();
     }
 
@@ -26,12 +28,32 @@ public class World {
         return wGeometry;
     }
 
+    public Character QueryWorld(int x, int y) {
+        return wGeometry[x][y];
+    }
+
+    public boolean QueryInBound(int x, int y) {
+        if (x - 1 > wXWidth) {
+            return false;
+        } else {
+            if (y - 1 > wYHeight) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
     public int GetWidth() {
         return wXWidth;
     }
 
     public int GetHeight() {
         return wYHeight;
+    }
+
+    public String GetName() {
+        return wName;
     }
 
 }

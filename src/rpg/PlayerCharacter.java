@@ -18,7 +18,6 @@ public class PlayerCharacter extends Actor {
     private void CheckExperience() {
         if (cExperience > EXPAtLevel(aLevel) + EXPAtLevel(aLevel + 1)) {
             aLevel += 1;
-            //TODO make this for real
         }
         return;
     }
