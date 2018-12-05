@@ -10,5 +10,9 @@ Version History
      * running main does 3 lines of text
  - 12/4/18
      * less skeleton, more meat
-	 * basic characters and classes
-	 * the beginnings of the render engine
+     * basic characters and classes
+     * the beginnings of the render engine
+     
+ - 12/5/18
+     * fleshing out more commands
+     * messing with the renderer
