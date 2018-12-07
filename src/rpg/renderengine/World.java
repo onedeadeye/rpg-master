@@ -1,19 +1,22 @@
 package rpg.renderengine;
 import java.util.*;
+import rpg.*;
 
 public class World {
 
     private int wXWidth = 16;
     private int wYHeight = 16;
     private String wName = "";
-    public Character[][] wGeometry = new Character[wXWidth][wYHeight];
+    public Character[][] wGeometry = new Character[wXWidth][wYHeight];;
+    private ArrayList wActors = new ArrayList<Actor>();
 
     public World(String name) {
         wName = name;
-        GenerateWorld();
+        GenerateRandomWorld();
     }
 
-    private void GenerateWorld() {
+    private void GenerateRandomWorld() {
+        // Generate geometry
         for (int i = 0; i < wGeometry.length; i++) {
             for (int j = 0; j < wGeometry[i].length; j++) {
                 wGeometry[i][j] = CharDefinitions.cGround;
@@ -21,6 +24,12 @@ public class World {
                     wGeometry[i][j] = CharDefinitions.cWater;
                 }
             }
+        }
+
+        // Generate randomly placed enemies
+        int enemiesToGenerate = Math.toIntExact(Math.round(Math.random() * 5));
+        for (int i = 0; i < enemiesToGenerate; i++) {
+            
         }
     }
 

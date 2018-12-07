@@ -1,22 +1,23 @@
-package rpg;
+package rpg.itemtype;
+import rpg.*;
 
 public class Weapon extends Item {
     private int wDamage;
     private boolean wIsMelee;
     private boolean wIsMagical;
 
-    public Weapon(String name, int value, float weight, int damage, boolean melee, boolean magical) {
-        super(name, value, weight);
+    public Weapon(String name, int value, int damage, boolean melee, boolean magical) {
+        super(name, value);
         wDamage = damage;
         wIsMelee = melee;
         wIsMagical = magical;
     }
 
-    public int Use(CompactStats stats, CompactModifiers mods) {
-        return Attack(stats, mods);
+    public int Use(CompactStats stats, CompactModifiers mods, String name) {
+        return Attack(stats, mods, name);
     }
 
-    private int Attack(CompactStats stats, CompactModifiers mods) {
+    private int Attack(CompactStats stats, CompactModifiers mods, String name) {
         int calculatedDamage = wDamage;
 
         if (wIsMelee) {
@@ -30,6 +31,8 @@ public class Weapon extends Item {
             calculatedDamage = calculatedDamage * ((stats.statIntuition / 100) + 1);
             calculatedDamage = Math.round(calculatedDamage * (mods.modifierMagicalAttack + 1));
         }
+
+        GameSingleton.Say(name + " is attacking for " + Integer.toString(wDamage) + " damage with their " + iName);
 
         return calculatedDamage;
     }

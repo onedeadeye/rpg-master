@@ -1,14 +1,19 @@
 package rpg;
 import java.util.*;
 import rpg.renderengine.*;
+import rpg.itemtype.*;
 
 public class Player {
 
     private String pName;
-    List<PlayerCharacter> pMembers = new ArrayList<>();
+    private ArrayList<PlayerCharacter> pMembers = new ArrayList<>();
 
     private int pXPos = 0;
     private int pYPos = 0;
+
+    private ArrayList<Weapon> pWeaponInventory = new ArrayList<>();
+    private ArrayList<Armor> pArmorInventory = new ArrayList<>();
+    
 
     public Player (String name) {
         pName = name;
@@ -55,5 +60,17 @@ public class Player {
         for (int i = 0; i < pMembers.size(); i++) {
             GameSingleton.Say(pMembers.get(i).aName + " - Level " + pMembers.get(i).aLevel + " " + pMembers.get(i).getClass().getName());
         }
+    }
+
+    public void AddWeapon(Weapon weapon) {
+
+    }
+
+    public void AddArmor(Armor armor) {
+
+    }
+
+    public void AddConsumable() {
+        //TODO: fix this
     }
 }

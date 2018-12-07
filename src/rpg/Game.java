@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class Game {
     
     private static GameSingleton game = GameSingleton.getInstance();
-
+    
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         game.Say("Welcome to the pre-alpha version of rpg-master!");
