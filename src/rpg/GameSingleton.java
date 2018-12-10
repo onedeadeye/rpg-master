@@ -1,9 +1,9 @@
 package rpg;
-import rpg.classes.*;
 import rpg.renderengine.*;
 import rpg.commandline.*;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import rpg.dictionaries.*;
 
 public class GameSingleton {
 
@@ -34,25 +34,28 @@ public class GameSingleton {
     public static void GameLoop(Engine engine, World world, Player player, Scanner scan) {
         while (true) {
             engine.RenderNoBorders();
-            String input = scan.nextLine();
-            CLHandler.CallCommand(input, player, world);
+            BattleLoop(player.GetPartyFighter(), EnemyDict.GoblinEnemy);
+            //String input = scan.nextLine();
+            //CLHandler.CallCommand(input, player, world);
         }
     }
 
     public static void BattleLoop(PlayerCharacter player, Enemy enemy) {
-        CompactStats playerStats = player.GetStats();
-        CompactModifiers playerMods = player.GetMods();
+        int playerSpeed = player.GetStats().statSpeed;
 
-        CompactStats enemyStats = enemy.GetStats();
-        CompactModifiers enemyMods = enemy.GetMods();
+        int enemySpeed = enemy.GetStats().statSpeed;
 
         boolean playerFirst = false;
 
         Say(player.GetName() + " and " + enemy.GetName() + " have entered a battle!");
 
+        if (player.IsFainted()) {
+            Say(player.GetName() + " has fainted and is unable to battle!");
+        }
+
         while (true) {
 
-            if (playerStats.statSpeed > enemyStats.statSpeed) {
+            if (playerSpeed > enemySpeed) {
                 playerFirst = true;
                 Say(player.GetName() + " has the initiative!");
             } else {
@@ -66,6 +69,8 @@ public class GameSingleton {
                 player.Defend(enemy.Attack());
                 enemy.Defend(player.Attack());
             }
+            player.CheckStatus();
+            enemy.CheckStatus();
 
             if (player.IsFainted()) {
                 Say("Battle ends in defeat!");

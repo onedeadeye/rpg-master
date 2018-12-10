@@ -4,7 +4,6 @@ import rpg.itemtype.*;
 public class Actor {
 
     protected String aName;
-    protected int aLevel;
 
     protected StatSheet aStats;
 
@@ -15,9 +14,8 @@ public class Actor {
     protected Weapon aWeapon;
     protected Armor aArmor;
 
-    public Actor(String name, int level, CompactStats stats, CompactModifiers mods) {
+    public Actor(String name, CompactStats stats, CompactModifiers mods) {
         aName = name;
-        aLevel = level;
         aStats = new StatSheet(stats, mods);
     }
 
@@ -50,7 +48,7 @@ public class Actor {
 
     protected void CalculateStatics() {
         CompactStats stats = aStats.GetStats();
-        aMaxHP = aLevel * stats.statVitality;
+        aMaxHP = stats.statVitality;
     }
 
     public void TakeDamage(int damage) {
@@ -63,7 +61,7 @@ public class Actor {
     }
 
     public int Defend(int damage) {
-        return Armor.Use(aStats.GetStats(), aStats.GetModifiers(), damage, aName);
+        return aArmor.Use(aStats.GetStats(), aStats.GetModifiers(), damage, aName);
     }
 
     public void SetWeapon(Weapon weapon) {

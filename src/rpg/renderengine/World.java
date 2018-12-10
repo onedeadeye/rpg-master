@@ -8,7 +8,7 @@ public class World {
     private int wYHeight = 16;
     private String wName = "";
     public Character[][] wGeometry = new Character[wXWidth][wYHeight];;
-    private ArrayList wActors = new ArrayList<Actor>();
+    private ArrayList<Actor> wActors = new ArrayList<Actor>();
 
     public World(String name) {
         wName = name;

@@ -1,5 +1,4 @@
 package rpg;
-import rpg.*;
 import rpg.itemtype.*;
 
 public class Enemy extends Actor {
@@ -7,8 +6,10 @@ public class Enemy extends Actor {
     private float weaponDropChance = 0.5f;
     private float armorDropChance = 0.5f;
 
-    public Enemy(String name, int level, CompactStats stats, CompactModifiers mods) {
-        super(name, level, stats, mods);
+    public Enemy(String name, CompactStats stats, CompactModifiers mods, Weapon weapon, Armor armor) {
+        super(name, stats, mods);
+        SetWeapon(weapon);
+        SetArmor(armor);
     }
 
     public void CheckStatus() {
@@ -17,11 +18,11 @@ public class Enemy extends Actor {
     }
 
     public int DefeatXP() {
-        return 10 * (aLevel * aLevel);
+        return 10 * (aStats.GetStats().GetTotal());
     }
 
     public Weapon DefeatWeapon() {
-        if (Math.random() * 100 = weaponDropChance * 100) {
+        if (Math.random() * 100 == weaponDropChance * 100) {
             return aWeapon;
         } else {
             return null;

@@ -4,11 +4,13 @@ public class PlayerCharacter extends Actor {
 
     private CharacterClass cClass;
 
+    private int cLevel;
     private int cExperience;
 
     public PlayerCharacter(String name, int level, CharacterClass newClass) {
-        super(name, level, newClass.getStartingStats(), newClass.getStartingMods());
+        super(name, newClass.getStartingStats(), newClass.getStartingMods());
         cClass = newClass;
+        cLevel = level;
     }
 
     private float EXPAtLevel(int level) {
@@ -16,10 +18,18 @@ public class PlayerCharacter extends Actor {
     }
 
     private void CheckExperience() {
-        if (cExperience > EXPAtLevel(aLevel) + EXPAtLevel(aLevel + 1)) {
-            aLevel += 1;
+        if (cExperience > EXPAtLevel(cLevel) + EXPAtLevel(cLevel + 1)) {
+            cLevel += 1;
         }
         return;
+    }
+
+    public CharacterClass GetClass() {
+        return cClass;
+    }
+
+    public int GetLevel() {
+        return cLevel;
     }
 
     public void CheckStatus() {
