@@ -30,8 +30,10 @@ public class Player {
         if (world.QueryInBound(x, y)) {
             pXPos += x;
             pYPos += y;
+            GameSingleton.Say("Moved player to " + Integer.toString(pXPos) + Integer.toString(pYPos));
             return true;
         } else {
+            GameSingleton.Say("Position " + Integer.toString(pXPos) + ", " + Integer.toString(pYPos) + " is out of map bounds");
             return false;
         }
     }

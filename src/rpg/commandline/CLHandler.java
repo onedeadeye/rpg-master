@@ -11,16 +11,26 @@ public final class CLHandler {
 
     public static void CallCommand(String command, Player player, World world) {
         int commandEndIndex = 0;
-        loop:
-        for (char c : command.toCharArray()) {
-            if (c == ' ') {
-                break loop;
+        char[] chars = command.toCharArray();
+        for (char c : chars) {
+            if (c == chars[chars.length - 1]) {
+                commandEndIndex++;
+                break;
+            } else {
+                if (c == ' ') {
+                    break;
+                }
             }
             commandEndIndex++;
         }
-        String splitCommand = command.substring(0, commandEndIndex);
-        String args = command.substring(commandEndIndex, command.length());
 
+        GameSingleton.Say("Command is " + Integer.toString(commandEndIndex) + " characters long");
+
+        String splitCommand = "";
+        String args = "";
+        
+        splitCommand = command.substring(0, commandEndIndex);
+        args = command.substring(commandEndIndex, command.length());
         args = args.substring(1);
 
         String[] splitArgs = args.split("\\s+");
@@ -41,6 +51,10 @@ public final class CLHandler {
 
         if (splitCommand.equals("listParty")) {
             new listParty(args, player, world);
+        }
+
+        if (splitCommand.equals("listCommands")) {
+            new listCommands();
         }
     }
 }

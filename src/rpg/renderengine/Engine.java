@@ -17,6 +17,7 @@ public class Engine {
     public void RenderNoBorders() {
         String renderBuffer = "";
         Character[][] cachedGeometry = eWorld.GetGeometry();
+        Actor[][] cachedActors = eWorld.GetActors();
 
         for (int x = 0; x < eWorld.GetWidth(); x++) {
             for (int y = 0; y < eWorld.GetHeight(); y++) {
@@ -24,8 +25,13 @@ public class Engine {
                     renderBuffer += CharDefinitions.cPCharacterChar;
                     renderBuffer += CharDefinitions.cSpaceChar;
                 } else {
-                    renderBuffer += cachedGeometry[x][y];
-                    renderBuffer += CharDefinitions.cSpaceChar;
+                    if (cachedActors[x][y] != null) {
+                        renderBuffer += CharDefinitions.cEnemyChar;
+                        renderBuffer += CharDefinitions.cSpaceChar;
+                    } else {
+                        renderBuffer += cachedGeometry[x][y];
+                        renderBuffer += CharDefinitions.cSpaceChar;
+                    }
                 }
             }
             System.out.println(renderBuffer);

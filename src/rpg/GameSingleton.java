@@ -34,9 +34,9 @@ public class GameSingleton {
     public static void GameLoop(Engine engine, World world, Player player, Scanner scan) {
         while (true) {
             engine.RenderNoBorders();
-            BattleLoop(player.GetPartyFighter(), EnemyDict.GoblinEnemy);
-            //String input = scan.nextLine();
-            //CLHandler.CallCommand(input, player, world);
+            //BattleLoop(player.GetPartyFighter(), EnemyDict.GoblinEnemy);
+            String input = scan.nextLine();
+            CLHandler.CallCommand(input, player, world);
         }
     }
 

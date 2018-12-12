@@ -1,5 +1,6 @@
 package rpg.renderengine;
 import java.util.*;
+import rpg.dictionaries.*;
 import rpg.*;
 
 public class World {
@@ -8,7 +9,7 @@ public class World {
     private int wYHeight = 16;
     private String wName = "";
     public Character[][] wGeometry = new Character[wXWidth][wYHeight];;
-    private ArrayList<Actor> wActors = new ArrayList<Actor>();
+    private Actor[][] wActors = new Actor[wXWidth][wYHeight];
 
     public World(String name) {
         wName = name;
@@ -28,13 +29,21 @@ public class World {
 
         // Generate randomly placed enemies
         int enemiesToGenerate = Math.toIntExact(Math.round(Math.random() * 5));
+        //TODO: remove this line
+        enemiesToGenerate = 5;
         for (int i = 0; i < enemiesToGenerate; i++) {
-            
+            int actorX = Math.toIntExact(Math.round(Math.random() * wXWidth) - 1);
+            int actorY = Math.toIntExact(Math.round(Math.random() * wXWidth) - 1);
+            wActors[actorX][actorY] = EnemyDict.GoblinEnemy;
         }
     }
 
     public Character[][] GetGeometry () {
         return wGeometry;
+    }
+
+    public Actor[][] GetActors () {
+        return wActors;
     }
 
     public Character QueryWorld(int x, int y) {
