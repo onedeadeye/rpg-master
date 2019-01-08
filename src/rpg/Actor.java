@@ -39,9 +39,9 @@ public class Actor {
     protected void CheckHealth() {
         if (aHP < aMaxHP) {
             fainted = true;
-            GameSingleton.Say(aName + " has fainted!");
+            Game.Say(aName + " has fainted!");
         } else {
-            GameSingleton.Say(aName + " has " + aHP + "/" + aMaxHP + " remaining.");
+            Game.Say(aName + " has " + aHP + "/" + aMaxHP + " remaining.");
         }
         return;
     }

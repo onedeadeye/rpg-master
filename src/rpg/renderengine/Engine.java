@@ -68,8 +68,8 @@ public class Engine {
         }
 
         bar = bar.substring(0, bar.length() - 1);
-        GameSingleton.Say(bar);
-        GameSingleton.Say("you are in " + eWorld.GetName());
-        GameSingleton.Say(bar);
+        Game.Say(bar);
+        Game.Say("you are in " + eWorld.GetName());
+        Game.Say(bar);
     }
 }

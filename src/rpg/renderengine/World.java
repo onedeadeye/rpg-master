@@ -1,5 +1,4 @@
 package rpg.renderengine;
-import java.util.*;
 import rpg.dictionaries.*;
 import rpg.*;
 
@@ -20,21 +19,31 @@ public class World {
         // Generate geometry
         for (int i = 0; i < wGeometry.length; i++) {
             for (int j = 0; j < wGeometry[i].length; j++) {
-                wGeometry[i][j] = CharDefinitions.cGround;
                 if (Math.round(Math.random() * 10) > 8) {
                     wGeometry[i][j] = CharDefinitions.cWater;
+                } else {
+                	wGeometry[i][j] = CharDefinitions.cGround;
                 }
             }
         }
 
-        // Generate randomly placed enemies
-        int enemiesToGenerate = Math.toIntExact(Math.round(Math.random() * 5));
-        //TODO: remove this line
-        enemiesToGenerate = 5;
+        
+        // 2 to 5 enemies
+        int enemiesToGenerate = (int) ((Math.random() * 4) + 2);
+
         for (int i = 0; i < enemiesToGenerate; i++) {
-            int actorX = Math.toIntExact(Math.round(Math.random() * wXWidth) - 1);
-            int actorY = Math.toIntExact(Math.round(Math.random() * wXWidth) - 1);
-            wActors[actorX][actorY] = EnemyDict.GoblinEnemy;
+        	while (true) {
+				int actorX = (int) (Math.random() * wXWidth);
+				int actorY = (int) (Math.random() * wYHeight);
+				
+				// Don't try to put two enemies on the same tile
+				if (wActors[actorX][actorY] != null) {
+					continue;
+				} else {
+					wActors[actorX][actorY] = EnemyDict.GoblinEnemy;
+					break;
+				}
+        	}
         }
     }
 

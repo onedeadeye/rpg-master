@@ -32,7 +32,7 @@ public class Weapon extends Item {
             calculatedDamage = Math.round(calculatedDamage * (mods.modifierMagicalAttack + 1));
         }
 
-        GameSingleton.Say(name + " is attacking for " + Integer.toString(wDamage) + " damage with their " + iName);
+        Game.Say(name + " is attacking for " + Integer.toString(wDamage) + " damage with their " + iName);
 
         return calculatedDamage;
     }
