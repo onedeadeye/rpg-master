@@ -44,6 +44,7 @@ public class Game {
 			// oOoOoO fancy foreach loop (easier to read)
 			for (char c : inputAsCharArray) {
 				System.out.print(c);
+				System.out.flush(); // Ensure  smooth output
 				TimeUnit.MILLISECONDS.sleep(waitDuration);
 			}
 		} catch (InterruptedException ex) {
