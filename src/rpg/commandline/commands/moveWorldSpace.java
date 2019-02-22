@@ -9,6 +9,6 @@ public class moveWorldSpace extends Command {
         
         player.MoveWorldSpace(Integer.parseInt(args[0]), Integer.parseInt(args[1]), world);
         
-        GameSingleton.Say("Moved " + player.GetName() + " to " + Integer.parseInt(args[0]) + ", " + Integer.parseInt(args[1]));
+        Game.Say("Moved " + player.GetName() + " to " + Integer.parseInt(args[0]) + ", " + Integer.parseInt(args[1]));
     }
 }

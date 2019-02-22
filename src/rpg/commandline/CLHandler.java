@@ -1,4 +1,7 @@
 package rpg.commandline;
+
+import java.util.Arrays;
+
 import rpg.commandline.commands.*;
 import rpg.*;
 import rpg.renderengine.*;
@@ -9,51 +12,44 @@ public final class CLHandler {
 
     }
 
-    public static void CallCommand(String command, Player player, World world) {
-        int commandEndIndex = 0;
-        char[] chars = command.toCharArray();
-        for (char c : chars) {
-            if (c == chars[chars.length - 1]) {
-                commandEndIndex++;
-                break;
-            } else {
-                if (c == ' ') {
-                    break;
-                }
-            }
-            commandEndIndex++;
-        }
+    public static void CallCommand(String commandLine, Player player, World world) {
+    	System.out.println(commandLine);
+    	
+    	String[] split = commandLine.split(" ");
+    	
+    	String cmd = split[0];
+    	
+    	String[] args = new String[] { "" }; // Sane default    	
+    	if (split.length > 1) {
+    		args = Arrays.copyOfRange(split, 1, split.length - 1);
+    	}
+    	
+    	String lineArg = commandLine.substring(cmd.length() - 1).trim(); // The trim gets rid of the leading space
+    	
 
-        GameSingleton.Say("Command is " + Integer.toString(commandEndIndex) + " characters long");
+        Game.Say("Debug: Command is \"" + cmd + "\"");
 
-        String splitCommand = "";
-        String args = "";
         
-        splitCommand = command.substring(0, commandEndIndex);
-        args = command.substring(commandEndIndex, command.length());
-        args = args.substring(1);
 
-        String[] splitArgs = args.split("\\s+");
 
-        //System.out.println("Calling " + splitCommand + " with args " + args);
-
-        if (splitCommand.equals("move")) {
-            new move(splitArgs, player, world);
+        if (cmd.equals("move")) {
+            new move(args, player, world);
         }
 
-        if (splitCommand.equals("moveWorldSpace")) {
-            new moveWorldSpace(splitArgs, player, world);
+        if (cmd.equals("moveWorldSpace")) {
+            new moveWorldSpace(args, player, world);
         }
 
-        if (splitCommand.equals("say")) {
-            new say(args, player, world);
+        if (cmd.equals("say")) {
+            new say(lineArg, player, world);
         }
 
-        if (splitCommand.equals("listParty")) {
-            new listParty(args, player, world);
+        if (cmd.equals("listParty")) {
+        	// We can safely pass null here because listParty doesn't care
+            new listParty(null, player, world);
         }
 
-        if (splitCommand.equals("listCommands")) {
+        if (cmd.equals("listCommands")) {
             new listCommands();
         }
     }

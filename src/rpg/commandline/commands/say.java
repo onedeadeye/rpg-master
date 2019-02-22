@@ -6,7 +6,7 @@ import rpg.renderengine.*;
 public class say extends Command {
 
     public say(String args, Player player, World world) {
-        GameSingleton.Say(player.GetName() + ": " + args);
+        Game.Say(player.GetName() + ": " + args);
     }
 
 }

@@ -20,7 +20,7 @@ public class Armor extends Item {
             calculatedDamage = 0;
         }
 
-        GameSingleton.Say(name + " is defending with their " + iName + ", reducing the damage to " + Integer.toString(calculatedDamage));
+        Game.Say(name + " is defending with their " + iName + ", reducing the damage to " + Integer.toString(calculatedDamage));
 
         return calculatedDamage;
     }
