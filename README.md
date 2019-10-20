@@ -1,7 +1,7 @@
 # rpg
 it's a text-based role playing game. hours of bland mediocrity! 
 
-Featuers
+Features
  - (ha none yet)
  
 Version History
