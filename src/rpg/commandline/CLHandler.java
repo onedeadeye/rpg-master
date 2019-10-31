@@ -19,18 +19,12 @@ public final class CLHandler {
     	
     	String cmd = split[0];
     	
-    	String[] args = new String[] { "" }; // Sane default    	
+    	String[] args = new String[] { "" }; // Sane default
     	if (split.length > 1) {
     		args = Arrays.copyOfRange(split, 1, split.length - 1);
     	}
     	
-    	String lineArg = commandLine.substring(cmd.length() - 1).trim(); // The trim gets rid of the leading space
-    	
-
-        Game.say("Debug: Command is \"" + cmd + "\"");
-
-        
-
+    	String lineArg = commandLine.substring(cmd.length()).trim(); // The trim gets rid of the leading space
 
         if (cmd.equals("move")) {
             new move(args, player, world);
