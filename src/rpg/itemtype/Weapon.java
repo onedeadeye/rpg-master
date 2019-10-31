@@ -13,11 +13,11 @@ public class Weapon extends Item {
         wIsMagical = magical;
     }
 
-    public int Use(CompactStats stats, CompactModifiers mods, String name) {
-        return Attack(stats, mods, name);
+    public int use(CompactStats stats, CompactModifiers mods, String name) {
+        return attack(stats, mods, name);
     }
 
-    private int Attack(CompactStats stats, CompactModifiers mods, String name) {
+    private int attack(CompactStats stats, CompactModifiers mods, String name) {
         int calculatedDamage = wDamage;
 
         if (wIsMelee) {
@@ -32,7 +32,7 @@ public class Weapon extends Item {
             calculatedDamage = Math.round(calculatedDamage * (mods.modifierMagicalAttack + 1));
         }
 
-        Game.Say(name + " is attacking for " + Integer.toString(wDamage) + " damage with their " + iName);
+        Game.say(name + " is attacking for " + Integer.toString(wDamage) + " damage with their " + iName);
 
         return calculatedDamage;
     }

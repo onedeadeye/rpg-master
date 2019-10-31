@@ -6,7 +6,7 @@ import rpg.renderengine.*;
 public class listInventory extends Command {
 
     public listInventory(String args, Player player, World world) {
-        player.ListPartyStatus();
+        player.listPartyStatus();
     }
 
 }

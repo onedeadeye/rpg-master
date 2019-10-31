@@ -12,11 +12,11 @@ public class move extends Command {
         //     System.out.println("that didn't work bud");
         // }
         try {
-            if (player.Move(Integer.parseInt(args[0]), Integer.parseInt(args[1]), world)) {
-                Game.Say("Moved " + player.GetName() + " by " + Integer.parseInt(args[0]) + ", " + Integer.parseInt(args[1]));
+            if (player.move(Integer.parseInt(args[0]), Integer.parseInt(args[1]), world)) {
+                Game.say("Moved " + player.getName() + " by " + Integer.parseInt(args[0]) + ", " + Integer.parseInt(args[1]));
             }
         } catch (ArrayIndexOutOfBoundsException ex) {
-            Game.Say("Incorrect parameters for command 'move', proper format is 'move <x> <y>'");
+            Game.say("Incorrect parameters for command 'move', proper format is 'move <x> <y>'");
             return;
         }
     }

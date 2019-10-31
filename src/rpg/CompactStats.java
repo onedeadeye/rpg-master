@@ -17,7 +17,7 @@ public class CompactStats {
         statIntuition = intuition;
     }
 
-    public int GetTotal() {
+    public int getTotal() {
         return statStrength + statDexterity + statSpeed + statVitality + statDefense + statIntuition;
     }
 }

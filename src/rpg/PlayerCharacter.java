@@ -13,28 +13,28 @@ public class PlayerCharacter extends Actor {
         cLevel = level;
     }
 
-    private float EXPAtLevel(int level) {
+    private float expAtLevel(int level) {
         return((0.5f*level) + 10);
     }
 
-    private void CheckExperience() {
-        if (cExperience > EXPAtLevel(cLevel) + EXPAtLevel(cLevel + 1)) {
+    private void checkExperience() {
+        if (cExperience > expAtLevel(cLevel) + expAtLevel(cLevel + 1)) {
             cLevel += 1;
         }
         return;
     }
 
-    public CharacterClass GetClass() {
+    public CharacterClass getCharacterClass() {
         return cClass;
     }
 
-    public int GetLevel() {
+    public int getLevel() {
         return cLevel;
     }
 
-    public void CheckStatus() {
-        CheckExperience();
-        CalculateStatics();
-        CheckHealth();
+    public void checkStatus() {
+        checkExperience();
+        calculateStatics();
+        checkHealth();
     }
 }

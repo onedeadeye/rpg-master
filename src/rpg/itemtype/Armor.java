@@ -7,11 +7,11 @@ public class Armor extends Item {
         super(name, value);
     }
 
-    public int Use(CompactStats stats, CompactModifiers mods, int damage, String name) {
-        return Defend(stats, mods, damage, name);
+    public int use(CompactStats stats, CompactModifiers mods, int damage, String name) {
+        return defend(stats, mods, damage, name);
     }
 
-    private int Defend(CompactStats stats, CompactModifiers mods, int damage, String name) {
+    private int defend(CompactStats stats, CompactModifiers mods, int damage, String name) {
         int calculatedDamage = damage;
 
         calculatedDamage = calculatedDamage - stats.statDefense;
@@ -20,7 +20,7 @@ public class Armor extends Item {
             calculatedDamage = 0;
         }
 
-        Game.Say(name + " is defending with their " + iName + ", reducing the damage to " + Integer.toString(calculatedDamage));
+        Game.say(name + " is defending with their " + iName + ", reducing the damage to " + Integer.toString(calculatedDamage));
 
         return calculatedDamage;
     }

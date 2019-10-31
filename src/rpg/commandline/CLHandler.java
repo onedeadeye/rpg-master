@@ -12,7 +12,7 @@ public final class CLHandler {
 
     }
 
-    public static void CallCommand(String commandLine, Player player, World world) {
+    public static void callCommand(String commandLine, Player player, World world) {
     	System.out.println(commandLine);
     	
     	String[] split = commandLine.split(" ");
@@ -27,7 +27,7 @@ public final class CLHandler {
     	String lineArg = commandLine.substring(cmd.length() - 1).trim(); // The trim gets rid of the leading space
     	
 
-        Game.Say("Debug: Command is \"" + cmd + "\"");
+        Game.say("Debug: Command is \"" + cmd + "\"");
 
         
 

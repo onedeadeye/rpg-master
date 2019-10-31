@@ -13,11 +13,11 @@ public class Item {
         super();
     }
 
-    public String GetName() {
+    public String getName() {
         return iName;
     }
 
-    public int GetValue() {
+    public int getValue() {
         return iValue;
     }
 }
