@@ -6,7 +6,7 @@ import rpg.renderengine.*;
 public class listParty extends Command {
 
     public listParty(String args, Player player, World world) {
-        player.ListPartyStatus();
+        player.listPartyStatus();
     }
 
 }

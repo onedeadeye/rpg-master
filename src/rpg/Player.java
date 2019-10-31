@@ -18,28 +18,28 @@ public class Player {
         pName = name;
     }
 
-    public void AddCharacter(PlayerCharacter newChar) {
+    public void addCharacter(PlayerCharacter newChar) {
         pMembers.add(newChar);
     }
 
-    public String GetName() {
+    public String getName() {
         return pName;
     }
 
-    public boolean Move(int x, int y, World world) {
-        if (world.QueryInBound(x, y)) {
+    public boolean move(int x, int y, World world) {
+        if (world.queryInBound(x, y)) {
             pXPos += x;
             pYPos += y;
-            Game.Say("Moved player to " + Integer.toString(pXPos) + Integer.toString(pYPos));
+            Game.say("Moved player to " + Integer.toString(pXPos) + Integer.toString(pYPos));
             return true;
         } else {
-            Game.Say("Position " + Integer.toString(pXPos) + ", " + Integer.toString(pYPos) + " is out of map bounds");
+            Game.say("Position " + Integer.toString(pXPos) + ", " + Integer.toString(pYPos) + " is out of map bounds");
             return false;
         }
     }
 
-    public boolean MoveWorldSpace(int x, int y, World world) {
-        if (world.QueryInBound(x, y)) {
+    public boolean moveWorldSpace(int x, int y, World world) {
+        if (world.queryInBound(x, y)) {
             pXPos = x;
             pYPos = y;
             return true;
@@ -48,53 +48,53 @@ public class Player {
         }
     }
 
-    public int GetXPos() {
+    public int getXPos() {
         return pXPos;
     }
 
-    public int GetYPos() {
+    public int getYPos() {
         return pYPos;
     }
 
-    public void ListPartyStatus() {
-        Game.Say("Status of " + pName + "'s party:");
+    public void listPartyStatus() {
+        Game.say("Status of " + pName + "'s party:");
         for (int i = 0; i < pMembers.size(); i++) {
-            Game.Say(pMembers.get(i).aName + " - Level " + pMembers.get(i).GetLevel() + " " + pMembers.get(i).GetClass().GetName());
+            Game.say(pMembers.get(i).aName + " - Level " + pMembers.get(i).getLevel() + " " + pMembers.get(i).getCharacterClass().getName());
         }
     }
 
-    public void ListInventory() {
-        Game.Say(pName + "'s inventory:");
+    public void listInventory() {
+        Game.say(pName + "'s inventory:");
         for (int i = 0; i < pWeaponInventory.size(); i++) {
-            Game.Say(pWeaponInventory.get(i).iName);
+            Game.say(pWeaponInventory.get(i).iName);
         }
     }
 
-    public void AddWeapon(Weapon weapon) {
+    public void addWeapon(Weapon weapon) {
         pWeaponInventory.add(weapon);
     }
 
-    public void AddArmor(Armor armor) {
+    public void addArmor(Armor armor) {
         pArmorInventory.add(armor);
     }
 
-    public ArrayList<Weapon> GetWeaponInventory() {
+    public ArrayList<Weapon> getWeaponInventory() {
         return pWeaponInventory;
     }
 
-    public ArrayList<Armor> GetArmorInventory() {
+    public ArrayList<Armor> getArmorInventory() {
         return pArmorInventory;
     }
 
-    public void SellItem(String itemName) {
+    public void sellItem(String itemName) {
 
     }
 
-    public void AddConsumable() {
+    public void addConsumable() {
         //TODO: fix this
     }
 
-    public PlayerCharacter GetPartyFighter() {
+    public PlayerCharacter getPartyFighter() {
         return pMembers.get(0);
     }
 }

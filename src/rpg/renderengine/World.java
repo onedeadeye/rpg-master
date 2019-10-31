@@ -12,10 +12,10 @@ public class World {
 
     public World(String name) {
         wName = name;
-        GenerateRandomWorld();
+        generateRandomWorld();
     }
 
-    private void GenerateRandomWorld() {
+    private void generateRandomWorld() {
         // Generate geometry
         for (int i = 0; i < wGeometry.length; i++) {
             for (int j = 0; j < wGeometry[i].length; j++) {
@@ -47,19 +47,19 @@ public class World {
         }
     }
 
-    public Character[][] GetGeometry () {
+    public Character[][] getGeometry() {
         return wGeometry;
     }
 
-    public Actor[][] GetActors () {
+    public Actor[][] getActors() {
         return wActors;
     }
 
-    public Character QueryWorld(int x, int y) {
+    public Character queryWorld(int x, int y) {
         return wGeometry[x][y];
     }
 
-    public boolean QueryInBound(int x, int y) {
+    public boolean queryInBound(int x, int y) {
         if (x > wXWidth || x < wXWidth) {
             return false;
         } else {
@@ -71,15 +71,15 @@ public class World {
         }
     }
 
-    public int GetWidth() {
+    public int getWidth() {
         return wXWidth;
     }
 
-    public int GetHeight() {
+    public int getHeight() {
         return wYHeight;
     }
 
-    public String GetName() {
+    public String getName() {
         return wName;
     }
 

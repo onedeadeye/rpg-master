@@ -33,7 +33,7 @@ public class StatSheet {
         modifierSpellCost = mods.modifierSpellCost;
     }
 
-    public void SetStats(int strength, int dexterity, int speed, int vitality, int defense, int intuition) {
+    public void setStats(int strength, int dexterity, int speed, int vitality, int defense, int intuition) {
         statStrength = strength;
         statDexterity = dexterity;
         statSpeed = speed;
@@ -42,11 +42,11 @@ public class StatSheet {
         statIntuition = intuition;
     }
 
-    public CompactStats GetStats() {
+    public CompactStats getStats() {
         return new CompactStats(statStrength, statDexterity, statSpeed, statVitality, statDefense, statIntuition);
     }
 
-    public void SetModifiers(float physicalAtt, float rangedAtt, float magicalAtt, float physicalDef, float rangedDef, float magicalDef, float spellCost) {
+    public void setModifiers(float physicalAtt, float rangedAtt, float magicalAtt, float physicalDef, float rangedDef, float magicalDef, float spellCost) {
         modifierPhysicalAttack = physicalAtt;
         modifierRangedAttack = rangedAtt;
         modifierMagicalAttack = magicalAtt;
@@ -56,7 +56,7 @@ public class StatSheet {
         modifierSpellCost = spellCost;
     }
 
-    public CompactModifiers GetModifiers() {
+    public CompactModifiers getModifiers() {
         return new CompactModifiers(modifierPhysicalAttack, modifierRangedAttack, modifierMagicalAttack, modifierPhysicalDefense, modifierRangedDefense, modifierMagicalDefense, modifierSpellCost);
     }
 }

@@ -10,20 +10,20 @@ public class Game {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		Say("Welcome to the pre-alpha version of rpg-master!");
-		Say("What is your name?");
+		say("Welcome to the pre-alpha version of rpg-master!");
+		say("What is your name?");
 		String input = "";
 		input = scan.nextLine();
 		Player player = new Player(input);
-		Say("Hello, " + player.GetName());
-		Say("This game has you lead a band of intrepid explorers across the world");
-		Say("What is your first adventurer's name?");
+		say("Hello, " + player.getName());
+		say("This game has you lead a band of intrepid explorers across the world");
+		say("What is your first adventurer's name?");
 		input = scan.nextLine();
-		PlayerCharacter newCharacter = new PlayerCharacter(input, 1, KnightClass.MakeClass());
-		KnightClass.InitializeClassGear(newCharacter);
-		player.AddCharacter(newCharacter);
-		player.ListPartyStatus();
-		player.AddCharacter(newCharacter);
+		PlayerCharacter newCharacter = new PlayerCharacter(input, 1, KnightClass.makeClass());
+		KnightClass.initializeClassGear(newCharacter);
+		player.addCharacter(newCharacter);
+		player.listPartyStatus();
+		player.addCharacter(newCharacter);
 
 		World world = new World("test world");
 		Engine engine = new Engine(player, world);
@@ -33,7 +33,7 @@ public class Game {
 		scan.close();
 	}
 
-	public static void Say(String input) {
+	public static void say(String input) {
 
 		// Sleep for this number of milliseconds
 		long waitDuration = 10;
@@ -60,52 +60,52 @@ public class Game {
 
 	public static void gameLoop(Engine engine, World world, Player player, Scanner scan) {
 		while (true) {
-			engine.RenderNoBorders();
+			engine.renderNoBorders();
 			// BattleLoop(player.GetPartyFighter(), EnemyDict.GoblinEnemy);
 			String input = scan.nextLine();
-			CLHandler.CallCommand(input, player, world);
+			CLHandler.callCommand(input, player, world);
 		}
 	}
 
-	public static void BattleLoop(PlayerCharacter player, Enemy enemy) {
-		int playerSpeed = player.GetStats().statSpeed;
+	public static void battleLoop(PlayerCharacter player, Enemy enemy) {
+		int playerSpeed = player.getStats().statSpeed;
 
-		int enemySpeed = enemy.GetStats().statSpeed;
+		int enemySpeed = enemy.getStats().statSpeed;
 
 		boolean playerFirst = false;
 
-		Say(player.GetName() + " and " + enemy.GetName() + " have entered a battle!");
+		say(player.getName() + " and " + enemy.getName() + " have entered a battle!");
 
-		if (player.IsFainted()) {
-			Say(player.GetName() + " has fainted and is unable to battle!");
+		if (player.isFainted()) {
+			say(player.getName() + " has fainted and is unable to battle!");
 		}
 
 		while (true) {
 
 			if (playerSpeed > enemySpeed) {
 				playerFirst = true;
-				Say(player.GetName() + " has the initiative!");
+				say(player.getName() + " has the initiative!");
 			} else {
-				Say(enemy.GetName() + " has the initiative!");
+				say(enemy.getName() + " has the initiative!");
 			}
 
 			if (playerFirst) {
-				enemy.Defend(player.Attack());
-				player.Defend(enemy.Attack());
+				enemy.defend(player.attack());
+				player.defend(enemy.attack());
 			} else {
-				player.Defend(enemy.Attack());
-				enemy.Defend(player.Attack());
+				player.defend(enemy.attack());
+				enemy.defend(player.attack());
 			}
-			player.CheckStatus();
-			enemy.CheckStatus();
+			player.checkStatus();
+			enemy.checkStatus();
 
-			if (player.IsFainted()) {
-				Say("Battle ends in defeat!");
+			if (player.isFainted()) {
+				say("Battle ends in defeat!");
 				break;
 			}
 
-			if (enemy.IsFainted()) {
-				Say("Battle ends in victory!");
+			if (enemy.isFainted()) {
+				say("Battle ends in victory!");
 
 			}
 		}

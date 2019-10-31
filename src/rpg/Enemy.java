@@ -8,20 +8,20 @@ public class Enemy extends Actor {
 
     public Enemy(String name, CompactStats stats, CompactModifiers mods, Weapon weapon, Armor armor) {
         super(name, stats, mods);
-        SetWeapon(weapon);
-        SetArmor(armor);
+        setWeapon(weapon);
+        setArmor(armor);
     }
 
-    public void CheckStatus() {
-        CalculateStatics();
-        CheckHealth();
+    public void checkStatus() {
+        calculateStatics();
+        checkHealth();
     }
 
-    public int DefeatXP() {
-        return 10 * (aStats.GetStats().GetTotal());
+    public int defeatXP() {
+        return 10 * (aStats.getStats().getTotal());
     }
 
-    public Weapon DefeatWeapon() {
+    public Weapon defeatWeapon() {
         if (Math.random() * 100 == weaponDropChance * 100) {
             return aWeapon;
         } else {
@@ -29,7 +29,7 @@ public class Enemy extends Actor {
         }
     }
 
-    public Armor DefeatArmor() {
+    public Armor defeatArmor() {
         if (Math.random() * 100 <= armorDropChance * 100) {
             return aArmor;
         } else {

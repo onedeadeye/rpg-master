@@ -13,7 +13,7 @@ public class CharacterClass {
         cLevelSpeed = levelSpeed;
     }
 
-    public String GetName() {
+    public String getName() {
         return cName;
     }
 

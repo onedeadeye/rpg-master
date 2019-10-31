@@ -19,60 +19,60 @@ public class Actor {
         aStats = new StatSheet(stats, mods);
     }
 
-    public String GetName() {
+    public String getName() {
         return aName;
     }
 
-    public CompactStats GetStats() {
-        return aStats.GetStats();
+    public CompactStats getStats() {
+        return aStats.getStats();
     }
 
     public CompactModifiers GetMods() {
-        return aStats.GetModifiers();
+        return aStats.getModifiers();
     }
 
-    public void CheckStatus() {
-        CheckHealth();
-        CalculateStatics();
+    public void checkStatus() {
+        checkHealth();
+        calculateStatics();
     }
 
-    protected void CheckHealth() {
+    protected void checkHealth() {
         if (aHP < aMaxHP) {
             fainted = true;
-            Game.Say(aName + " has fainted!");
+            Game.say(aName + " has fainted!");
         } else {
-            Game.Say(aName + " has " + aHP + "/" + aMaxHP + " remaining.");
+            Game.say(aName + " has " + aHP + "/" + aMaxHP + " remaining.");
         }
         return;
     }
 
-    protected void CalculateStatics() {
-        CompactStats stats = aStats.GetStats();
+    protected void calculateStatics() {
+        CompactStats stats = aStats.getStats();
         aMaxHP = stats.statVitality;
     }
 
-    public void TakeDamage(int damage) {
+    public void takeDamage(int damage) {
         aHP -= damage;
-        CheckStatus();
+        checkStatus();
     }
 
-    public int Attack() {
-        return aWeapon.Use(aStats.GetStats(), aStats.GetModifiers(), aName);
+    public int attack() {
+        return aWeapon.use(aStats.getStats(), aStats.getModifiers(), aName);
     }
 
-    public int Defend(int damage) {
-        return aArmor.Use(aStats.GetStats(), aStats.GetModifiers(), damage, aName);
+    public int defend(int damage) {
+        return aArmor.use(aStats.getStats(), aStats.getModifiers(), damage, aName);
     }
 
-    public void SetWeapon(Weapon weapon) {
+    public void setWeapon(Weapon weapon) {
         aWeapon = weapon;
     }
 
-    public void SetArmor(Armor armor) {
+    public void setArmor(Armor armor) {
         aArmor = armor;
     }
 
-    public boolean IsFainted() {
+    public boolean isFainted() {
         return fainted;
     }
 }

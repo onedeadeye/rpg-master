@@ -14,14 +14,14 @@ public class Engine {
         eWorld = world;
     }
 
-    public void RenderNoBorders() {
+    public void renderNoBorders() {
         String renderBuffer = "";
-        Character[][] cachedGeometry = eWorld.GetGeometry();
-        Actor[][] cachedActors = eWorld.GetActors();
+        Character[][] cachedGeometry = eWorld.getGeometry();
+        Actor[][] cachedActors = eWorld.getActors();
 
-        for (int x = 0; x < eWorld.GetWidth(); x++) {
-            for (int y = 0; y < eWorld.GetHeight(); y++) {
-                if (x == ePlayer.GetXPos() && y == ePlayer.GetYPos()) {
+        for (int x = 0; x < eWorld.getWidth(); x++) {
+            for (int y = 0; y < eWorld.getHeight(); y++) {
+                if (x == ePlayer.getXPos() && y == ePlayer.getYPos()) {
                     renderBuffer += CharDefinitions.cPCharacterChar;
                     renderBuffer += CharDefinitions.cSpaceChar;
                 } else {
@@ -37,16 +37,16 @@ public class Engine {
             System.out.println(renderBuffer);
             renderBuffer = "";
         }
-        RenderStatusBar();
+        renderStatusBar();
     }
 
     //TODO: RenderWithWindow is currently not being worked on. FInish RenderNoBorders first.
-    public void RenderWithWindow(int xPos, int yPos) {
+    public void renderWithWindow(int xPos, int yPos) {
         String renderBuffer = "";
-        Character[][] cachedGeometry = eWorld.GetGeometry();
+        Character[][] cachedGeometry = eWorld.getGeometry();
 
-        for (int x = eXBorder + xPos; x < eWorld.GetWidth(); x++) {
-            for (int y = eYBorder + yPos; y < eWorld.GetHeight(); y++) {
+        for (int x = eXBorder + xPos; x < eWorld.getWidth(); x++) {
+            for (int y = eYBorder + yPos; y < eWorld.getHeight(); y++) {
                 renderBuffer += cachedGeometry[x][y];
                 renderBuffer += CharDefinitions.cSpaceChar;
             }
@@ -55,21 +55,21 @@ public class Engine {
         }
     }
 
-    public void SetWindow(int xBorder, int yBorder) {
+    public void setWindow(int xBorder, int yBorder) {
         eXBorder = xBorder;
         eYBorder = yBorder;
     }
 
-    public void RenderStatusBar() {
+    public void renderStatusBar() {
         String bar = "";
 
-        for (int x = 0; x < eWorld.GetWidth(); x++) {
+        for (int x = 0; x < eWorld.getWidth(); x++) {
             bar += "--";
         }
 
         bar = bar.substring(0, bar.length() - 1);
-        Game.Say(bar);
-        Game.Say("you are in " + eWorld.GetName());
-        Game.Say(bar);
+        Game.say(bar);
+        Game.say("you are in " + eWorld.getName());
+        Game.say(bar);
     }
 }
